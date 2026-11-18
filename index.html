@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高二英文第一次段考線上測驗 (113-1-1 A卷 完整版 第16-92題)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body { font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; background-color: #f1f5f9; }
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useMemo } = React;
+
+        // 16-35: Level Vocabulary (20%)
+        const vocabQuestions = [
+            { id: 16, text: "The ___ shows the declining working population, which is not good for the economy.", options: ["(A) anniversary", "(B) confusion", "(C) accent", "(D) diagram"], correct: 3, exp: "答案: (D) diagram (圖表)。\n💡 老師解析：句意為「『圖表』顯示勞動人口正在下降」。\n(A) 週年紀念 (B) 困惑 (C) 口音。\n【搭配詞】show/illustrate the diagram（展示圖表）、pie diagram（圓餅圖）。" },
+            { id: 17, text: "The ancients used very ___ writing material like animal skin, which makes it difficult to read.", options: ["(A) coarse", "(B) continuous", "(C) desperate", "(D) critical"], correct: 0, exp: "答案: (A) coarse (粗糙的)。\n💡 老師解析：動物皮毛製成的書寫材料質地「粗糙」，導致不易閱讀。\n(B) 連續的 (C) 絕望的 (D) 關鍵的/批判的。\n【搭配詞】coarse texture（粗糙的質地）、coarse cloth（粗布）。" },
+            { id: 18, text: "Nokia used to ___ the mobile phone market until the iPhone arrived.", options: ["(A) consist", "(B) boast", "(C) dominate", "(D) blend"], correct: 2, exp: "答案: (C) dominate (稱霸/主導)。\n💡 老師解析：諾基亞曾「主導/稱霸」手機市場。\n(A) 由...組成 (常接 of) (B) 自誇 (D) 混合。\n【搭配詞】dominate the market（稱霸市場）、dominate the industry（主導產業）。" },
+            { id: 19, text: "Her words do not ___ to her actions. She says one thing and does another.", options: ["(A) clashed", "(B) correspond", "(C) appoint", "(D) bargain"], correct: 1, exp: "答案: (B) correspond (符合/對應)。\n💡 老師解析：correspond to/with 指「與...一致/符合」。後句「言行不一」(says one thing and does another) 是解題線索。\n(A) 衝突 (C) 指派 (D) 討價還價。" },
+            { id: 20, text: "The company almost got ___ because of bad management practice.", options: ["(A) assemble", "(B) accomplished", "(C) chewed", "(D) bankrupt"], correct: 3, exp: "答案: (D) bankrupt (破產的)。\n💡 老師解析：get/go bankrupt 為固定用法，意為「破產」。\n(A) 集合/組裝 (B) 有造詣的 (C) 咀嚼的。\n【字根】bank(銀行) + rupt(破裂) -> 破產。" },
+            { id: 21, text: "Labor and ___ must work together; that is, the workers and the owners of business must cooperate towards a common goal and not work against each other.", options: ["(A) capital", "(B) diploma", "(C) candidate", "(D) chamber"], correct: 0, exp: "答案: (A) capital (資方/資本)。\n💡 老師解析：Labor and capital 指「勞方與資方」。後文補充「the workers (勞工) and the owners of business (資方)」。\n(B) 文憑 (C) 候選人 (D) 房間/會議室。" },
+            { id: 22, text: "A high school ___ is good enough to get hired in a factory; one doesn't need a college degree for that.", options: ["(A) chorus", "(B) diploma", "(C) draft", "(D) cue"], correct: 1, exp: "答案: (B) diploma (畢業文憑)。\n💡 老師解析：high school diploma (高中畢業證書)，與後文的 college degree (大學學位) 對應。\n(A) 合唱團 (C) 草稿 (D) 線索/提示。" },
+            { id: 23, text: "The latest Samsung smartphone is very ___ and can be submerged in water without getting damaged, or even remains intact after falling from 50 feet.", options: ["(A) durable", "(B) courageous", "(C) classified", "(D) authentic"], correct: 0, exp: "答案: (A) durable (耐用的/持久的)。\n💡 老師解析：手機泡水不壞、高處墜落仍完好(remains intact)，代表其非常「耐用」。\n(B) 勇敢的 (C) 機密的 (D) 正宗的/真實的。" },
+            { id: 24, text: "The Greeks ___ the city of Troy by sending their soldiers inside a gigantic wooden horse.", options: ["(A) accompanied", "(B) adapted", "(C) conquered", "(D) disguised"], correct: 2, exp: "答案: (C) conquered (征服/攻克)。\n💡 老師解析：希臘人藉由特洛伊木馬「攻克、征服」了特洛伊城。\n(A) 陪伴 (B) 適應/改編 (D) 喬裝/偽裝。" },
+            { id: 25, text: "A call from an unknown person asking for his bank account ___ his suspicion that it was a scam.", options: ["(A) amused", "(B) circulated", "(C) annoyed", "(D) aroused"], correct: 3, exp: "答案: (D) aroused (激起/喚起)。\n💡 老師解析：arouse one's suspicion 是極具考相的搭配片語，意為「引起某人的懷疑」。\n(A) 逗樂 (B) 傳播 (C) 惹怒。" },
+            { id: 26, text: "One can hardly ___ that Shakespeare was one of greatest playwright of the English language.", options: ["(A) abandon", "(B) acquaint", "(C) calculate", "(D) dispute"], correct: 3, exp: "答案: (D) dispute (爭論/否認)。\n💡 老師解析：hardly dispute 表「無庸置疑/難以否認」。莎士比亞是公認最偉大的劇作家之一。\n(A) 放棄 (B) 認識 (C) 計算。" },
+            { id: 27, text: "The ___ for the US president is now heating up, with both candidates almost even in the recent polls.", options: ["(A) combination", "(B) campaign", "(C) constitution", "(D) cooperation"], correct: 1, exp: "答案: (B) campaign (競選活動)。\n💡 老師解析：the presidential campaign (總統競選運動)。後文 candidates 與 polls 為解題線索。\n(A) 結合 (C) 憲法 (D) 合作。" },
+            { id: 28, text: "An argument ___ between Jack and Jane, because the former wanted spaghetti, while the latter wanted Chinese noodles for dinner.", options: ["(A) defended", "(B) deserved", "(C) arose", "(D) collapsed"], correct: 2, exp: "答案: (C) arose (產生/發生)。\n💡 老師解析：動詞原形為 arise，過去式為 arose。An argument arose 指「爆發了一場爭吵」。\n(A) 保衛 (B) 應得 (D) 倒塌。" },
+            { id: 29, text: "The politician gave a very ___ remark when asked how he would solve the problem of poverty in the country; that is, his answer was really smart but fake.", options: ["(A) clumsy", "(B) atomic", "(C) ambitious", "(D) cunning"], correct: 3, exp: "答案: (D) cunning (狡黠的/精明但虛偽的)。\n💡 老師解析：破折號後的解釋 \"smart but fake\"（聰明卻虛偽）正是 cunning 的核心語義。\n(A) 笨拙的 (B) 原子的 (C) 有野心的。" },
+            { id: 30, text: "He ___ to hear the news that his wife was diagnosed with cancer and had only a couple of months to live. He was afraid to face the truth.", options: ["(A) ceased", "(B) dreaded", "(C) clarified", "(D) blessing"], correct: 1, exp: "答案: (B) dreaded (懼怕/擔憂)。\n💡 老師解析：dread to V 指「害怕/不敢做某事」。後句 \"afraid to face the truth\" 提供明確佐證。\n(A) 停止 (C) 澄清 (D) 祝福。" },
+            { id: 31, text: "If you want to be in business, you need to be ___ because honesty wins the trust of consumers.", options: ["(A) diligent", "(B) earnest", "(C) competitive", "(D) athletic"], correct: 1, exp: "答案: (B) earnest (真誠的/認真的)。\n💡 老師解析：由後方因果句 \"honesty wins trust\"（誠實贏得信任）可知商人需「真誠 (earnest)」待人。\n(A) 勤勉的 (C) 具競爭力的 (D) 運動的。" },
+            { id: 32, text: "In the ___ of an eye, his 20 years of hard work was destroyed by one strong typhoon.", options: ["(A) authority", "(B) blossom", "(C) comment", "(D) blink"], correct: 3, exp: "答案: (D) blink (眨眼)。\n💡 老師解析：固定成語搭配 in the blink of an eye，意思為「轉眼之間/剎那間」。\n(A) 權威 (B) 花朵盛開 (C) 評論。" },
+            { id: 33, text: "It is quite ___ that Mary has a crush on Michael, because she blushes whenever she hears Michael's name is mentioned.", options: ["(A) composed", "(B) apparent", "(C) convinced", "(D) delicate"], correct: 1, exp: "答案: (B) apparent (顯而易見的)。\n💡 老師解析：由後文「提到名字就臉紅」可知她暗戀 Michael 是「顯而易見的 (apparent)」。\n(A) 鎮定的 (C) 深信的 (D) 纖細的。" },
+            { id: 34, text: "It is expected that the US economy can ___ back after the US presidential election, because it has been undergoing inflation for the past few months.", options: ["(A) devise", "(B) dismiss", "(C) bounce", "(D) concentrate"], correct: 2, exp: "答案: (C) bounce (彈跳)。\n💡 老師解析：慣用語 bounce back 意為「強勁反彈/復甦」。\n(A) 設計/想出 (B) 解雇/打發 (D) 專心。" },
+            { id: 35, text: "The father joined the son on a camping trip, which created a stronger ___ between them.", options: ["(A) bond", "(B) bred", "(C) barrier", "(D) choked"], correct: 0, exp: "答案: (A) bond (情感連結/羈絆)。\n💡 老師解析：create/forge a strong bond between... 指「建立緊密深厚的情感牽絆」。\n(B) 繁殖 (過去式) (C) 隔閡/障礙 (D) 哽噎。" }
+        ];
+
+        const clozePassages = [
+            {
+                title: "Cloze 1: Ronald McDonald Hospital Visit (第36-40題)",
+                intro: "Several years ago, while working for McDonald's, I participated in a community outreach service, often visiting [36] ill children at the local hospital. One particular rule prohibited me from visiting children alone or having physical contact, for my painted face and red wig might frighten them, and contact could [37] germs to them. One day, a fragile boy named Billy asked me for a hug after I did some magic tricks to cheer him up. Though turning down Billy's request pained me deeply, I had no choice but to submit to the rules. When I rose to my feet to leave, the hopeful look in his eyes [38] me to recognize that genuine affection and compassion could be most powerfully expressed through an empathetic and heartfelt embrace. All of a sudden, I no longer cared if I was [39] breaking the rules and hugged him right away. Little Billy then confided his worries to me and showed an extraordinary sense of selflessness. It seemed that he knew he would never be going home, [40] he was only thinking of his brother and dog. I was overwhelmed with emotion when Billy's mother called to inform me of his passing. I was grateful that I chose to break the rules and spend that time with him, which was truly unforgettable.",
+                questions: [
+                    { id: 36, options: ["(A) ridiculously", "(B) individually", "(C) terminally", "(D) beneficially"], correct: 2, exp: "答案: (C) terminally。\n💡 解析：terminally ill 指「罹患絕症/晚期的」。醫院病童罹患重症臨終，呼應後文 passing (逝世)。" },
+                    { id: 37, options: ["(A) map out", "(B) confine to", "(C) suffer from", "(D) pass on"], correct: 3, exp: "答案: (D) pass on。\n💡 解析：pass on germs to sb 指「將細菌傳染給某人」。(A) 籌劃 (B) 限制於 (C) 承受受苦於。" },
+                    { id: 38, options: ["(A) prompted", "(B) hesitated", "(C) erected", "(D) sparkled"], correct: 0, exp: "答案: (A) prompted。\n💡 解析：prompt sb to V 指「促使/驅使某人去做...」。男孩期盼的眼神促使作者領悟深層的同理心。" },
+                    { id: 39, options: ["(A) about to catch", "(B) caught", "(C) got caught", "(D) being caught"], correct: 1, exp: "答案: (B) caught。\n💡 解析：was caught doing sth（被抓到正在做違規的事）。被動語態 was + p.p.。" },
+                    { id: 40, options: ["(A) and then", "(B) so that", "(C) but also", "(D) and yet"], correct: 3, exp: "答案: (D) and yet。\n💡 解析：and yet (然而)，表語意轉折。他知道自己回不了家，但心中掛念的卻依然是弟弟與狗狗，展現無私。" }
+                ]
+            },
+            {
+                title: "Cloze 2: The Marshmallow Challenge (第41-45題)",
+                intro: "Promoted by Tom Wujec, the Marshmallow Challenge is a team-building exercise [41] participants range from professionals, such as architects and engineers, to business school graduates and even kindergarteners. The Marshmallow Challenge tasks its participants with building the tallest free-standing structure using spaghetti sticks, tape, string, and a marshmallow within an 18-minute timeframe, revealing surprising insights into teamwork and problem-solving. In Wujec's study, across the diverse groups, architects and engineers, [42], won the championship as a result of their professional training. In contrast, business graduates [43] the last despite planning meticulously and adhering to structured analyses. Kindergarteners amazingly outperformed business graduates. The outcome of the former group was much more impressive than [44] of the latter one. [45] main reason for such success was that business graduates wasted too much time deciding who was in charge, whereas kindergarteners were more focused on working on unique ideas to figure out how to solve problems collaboratively. The trial-and-error approach they adopted helped them identify and fix design flaws within the time limit and finally achieved the second best performance.",
+                questions: [
+                    { id: 41, options: ["(A) that", "(B) which", "(C) what", "(D) whose"], correct: 3, exp: "答案: (D) whose。\n💡 解析：先行詞為 exercise，後方名詞 participants 前需用所有格關係代名詞 whose（其參與者）。" },
+                    { id: 42, options: ["(A) surprisingly", "(B) instead of", "(C) as expected", "(D) eventually"], correct: 2, exp: "答案: (C) as expected。\n💡 解析：as expected (正如預期地)。建築師與工程師因專業訓練得第一，乃意料之中的事。" },
+                    { id: 43, options: ["(A) ranking", "(B) ranked", "(C) which rank", "(D) who ranked"], correct: 1, exp: "答案: (B) ranked。\n💡 解析：本句缺少主要子句動詞。business graduates (主詞) ranked the last (動詞過去式，敬陪末座)。" },
+                    { id: 44, options: ["(A) those", "(B) these", "(C) that", "(D) this"], correct: 2, exp: "答案: (C) that。\n💡 解析：代名詞 that 用於指代前方不可數或單數名詞 the outcome。" },
+                    { id: 45, options: ["(A) One", "(B) Another", "(C) Still another", "(D) The other"], correct: 0, exp: "答案: (A) One。\n💡 解析：One main reason for... 指「其中的一項主因是...」。" }
+                ]
+            },
+            {
+                title: "Cloze 3: Prometheus in Greek Mythology (第46-50題)",
+                intro: "In Greek mythology, Prometheus is known [46] the Titan who defied Zeus by stealing fire and giving it to humanity, setting the stage for human civilization. He created human beings out of clay. His brother Epimetheus then gave all living creatures on earth different qualities. By the time Epimetheus got to human beings, he [47] out of gifts. To compensate for their weaker state, Prometheus enabled them to stand upright like the gods. Not only kind but generous, he gave them fire to keep warm, cook food, and make tools. This act of generosity ended up bringing him into conflict with Zeus, the supreme ruler of the Olympian gods. Prometheus's defiance reached its zenith at Mecone, where all-powerful gods and vulnerable humans met to decide on the [48] of sacrifices. Prometheus wittingly deceived Zeus for the good of humans, offering the god a choice between two disguised portions of a(n) [49] bull. Zeus, misled by the outward appearance of the offering, selected a pile of bones hidden underneath gleaming fat, leaving the meat for human consumption. Zeus later retaliated by stripping humankind of fire. [50] Prometheus stole fire from the sun, returning it to mortals, thus restoring their ability to survive and progress.",
+                questions: [
+                    { id: 46, options: ["(A) to", "(B) for", "(C) as", "(D) by"], correct: 2, exp: "答案: (C) as。\n💡 解析：be known as + 身分/職位，在此指「以身為違抗宙斯的泰坦神祇而聞名」。" },
+                    { id: 47, options: ["(A) ran", "(B) had run", "(C) was run", "(D) had been run"], correct: 1, exp: "答案: (B) had run。\n💡 解析：由 \"By the time + 過去式動詞 (got)\" 引導時間子句，主句動作發生在更早的過去，故用過去完成式 had run out of。" },
+                    { id: 48, options: ["(A) corporation", "(B) distribution", "(C) reception", "(D) anticipation"], correct: 1, exp: "答案: (B) distribution。\n💡 解析：distribution of sacrifices 指祭品肉品與骨頭的「分配/分發」。" },
+                    { id: 49, options: ["(A) slaughtered", "(B) tortured", "(C) adjusted", "(D) promised"], correct: 0, exp: "答案: (A) slaughtered。\n💡 解析：a slaughtered bull 指「一頭被宰殺的公牛（用於獻祭）」。" },
+                    { id: 50, options: ["(A) After all", "(B) However", "(C) In spite", "(D) Moreover"], correct: 1, exp: "答案: (B) However。\n💡 解析：However (然而)。宙斯奪走火種報復，然而普羅米修斯再度冒險偷火相贈。" }
+                ]
+            },
+            {
+                title: "Cloze 4: Poleward Migration of Fish (第51-55題)",
+                intro: "You may have heard that many land animals are forced to relocate because of climate change. But did you know that fish are also [51] ? Over 90 percent of the heat trapped by greenhouse gases over the last 50 years has been absorbed by the oceans. As the oceans heat up, the fish populations cannot [52] the changing temperature of the water around them. [53] tropical fish are being found in the temperate zones, and temperate fish are heading to the poles. This poleward migration is having a significant economic impact. In Iceland, for instance, rising ocean temperatures have caused capelin, the fish known for its tiny orange roe highly valued in Japan, [54] northward, leaving Icelandic waters. In 2018 and 2019, the capelin population dropped so low that the fish harvest had to be canceled, causing a major economic [55] as the harvest was valued at $143 million.",
+                questions: [
+                    { id: 51, options: ["(A) in a flash", "(B) on the move", "(C) in a row", "(D) on the rise"], correct: 1, exp: "答案: (B) on the move。\n💡 解析：on the move 指「在遷移/移動中」，呼應前一句動物 forced to relocate。" },
+                    { id: 52, options: ["(A) back up", "(B) cut across", "(C) adapt to", "(D) wipe out"], correct: 2, exp: "答案: (C) adapt to。\n💡 解析：adapt to the temperature 指「適應水溫變化」。" },
+                    { id: 53, options: ["(A) As a result", "(B) On the one hand", "(C) In a word", "(D) Most of all"], correct: 0, exp: "答案: (A) As a result。\n💡 解析：As a result (因此/結果)。魚類無法適應，導致熱帶魚往溫帶跑、溫帶魚往兩極遷徙。" },
+                    { id: 54, options: ["(A) to migrate", "(B) migrate", "(C) and migrated", "(D) migrating"], correct: 0, exp: "答案: (A) to migrate。\n💡 解析：cause + O + to V (導致某事物去從事...)，故選 to migrate。" },
+                    { id: 55, options: ["(A) relief", "(B) boost", "(C) recovery", "(D) blow"], correct: 3, exp: "答案: (D) blow。\n💡 解析：a major economic blow 指「一次嚴重的經濟重創/打擊」。" }
+                ]
+            }
+        ];
+
+        const contextOptions = [
+            { key: "A", label: "(A) development" },
+            { key: "B", label: "(B) recovering" },
+            { key: "C", label: "(C) equipped" },
+            { key: "D", label: "(D) assembling" },
+            { key: "E", label: "(E) construction" },
+            { key: "AB", label: "(AB) required" },
+            { key: "AC", label: "(AC) care" },
+            { key: "AD", label: "(AD) limit" },
+            { key: "AE", label: "(AE) quality" },
+            { key: "BC", label: "(BC) available" }
+        ];
+
+        const contextPassageQuestions = [
+            { id: 56, text: "Three-dimensional printing has revolutionized medical [56], ecology and construction.", correct: "AC", exp: "答案: (AC) care。\n💡 解析：medical care (醫療照護)。3D列印徹底革新了醫療、生態與建築。" },
+            { id: 57, text: "artificial limbs can now be produced through 3D printing, allowing them to be [57] at relatively cheap prices.", correct: "BC", exp: "答案: (BC) available。\n💡 解析：allowing them to be available at cheap prices (使義肢能以便宜親民的價格取得)。" },
+            { id: 58, text: "chance at improving the [58] of their lives.", correct: "AE", exp: "答案: (AE) quality。\n💡 解析：improve the quality of life (提升生活品質) 是重要且常見的高頻搭配詞。" },
+            { id: 59, text: "These prosthetic limbs are [59] with sensors to help one move...", correct: "C", exp: "答案: (C) equipped。\n💡 解析：be equipped with 指「配備有...感測器」。" },
+            { id: 60, text: "Another exciting [60] using 3D printers is creating artificial coral reefs...", correct: "A", exp: "答案: (A) development。\n💡 解析：Another exciting development 指「另一項令人振奮的重大進展」。" },
+            { id: 61, text: "Precious underwater lives are now [61] in the Caribbean.", correct: "B", exp: "答案: (B) recovering。\n💡 解析：are now recovering 指「珍貴的海洋生物正在逐漸復原康復」。" },
+            { id: 62, text: "building [62] has never been easier with 3D printing technology.", correct: "E", exp: "答案: (E) construction。\n💡 解析：building construction 指「房屋建造/建築營造」。" },
+            { id: 63, text: "Dubai is leading the way in [63] buildings that are produced by 3D printers.", correct: "D", exp: "答案: (D) assembling。\n💡 解析：in assembling buildings (在組裝組建3D列印建築方面領先全球)。" },
+            { id: 64, text: "with half of the labor and a tenth of the time [64]...", correct: "AB", exp: "答案: (AB) required。\n💡 解析：the time required 為分詞後位修飾，表「所需的時間」。" },
+            { id: 65, text: "The sky is the [65] when it comes to 3D printers...", correct: "AD", exp: "答案: (AD) limit。\n💡 解析：慣用語 The sky is the limit 指「無可限量/前景無限」。" }
+        ];
+
+        const readingPassage = "Yayoi Kusama is a Japanese artist often referred to as 'the princess of polka dots'. Her work, characterized by polka dots, repeated patterns, and psychedelic colors, has evolved from paintings to landscape installations, earning her recognition worldwide.\n\nBorn in Japan in 1929 to a wealthy, conservative family, Kusama faced severe abuse from her mother and began showing signs of mental illness in childhood. In the late 1950s, she left Japan for New York City. Despite knowing no one there, Kusama quickly made a name for herself in the local avant-garde art scene. She often wore traditional Japanese dresses to parties to stand out and actively supported the values of the 1960s by organizing anti-Vietnam War 'happenings,' where she painted polka dots on participants' naked bodies.\n\nContrary to the bright colors in her work, there is a darker reality behind it. Kusama suffers from hallucinations and obsessive thoughts, some of which are suicidal. In the 1970s, Kusama returned to Tokyo and voluntarily entered a mental institution, where she has spent the past four decades. Down the street from the facility is Kusama's studio, where she goes whenever she feels the urge to create. In an interview, she expressed that she doesn't want to cure her mental health issues; instead, she aims to utilize them as a source of inspiration for her art. In her 1978 novel, Manhattan Suicide Addict, Kusama explains the significance of polka dots, stating that they are 'a way to infinity.' She describes them as representing both the sun, which symbolizes the energy of life, and the moon, which conveys calmness.\n\nIn addition to being an artist and novelist, Kusama is also a savvy businesswoman, having founded her own fashion line and designed products for Louis Vuitton's accessory collections. Indeed, she is a style icon, crafting her image with colorful wigs, bold lipstick, and dresses featuring polka-dot patterns. Successfully transforming her anguish into recognition, Kusama is now in her 90s and continues to thrive.";
+
+        const discourseOptions = [
+            { key: "A", text: "(A) Why the number of babies is falling around the world, in many different cultures, in varying economic circumstances, is a mystery." },
+            { key: "B", text: "(B) Russia's Putin is now offering a 'Soviet heroine' medal for mothers with more than ten children." },
+            { key: "C", text: "(C) The cover is linked to an article by staff writer Margaret Talbot, 'J. D. Vance and the Right's Call to Have More Babies.'" },
+            { key: "D", text: "(D) We, however, have the misfortune to live in an age where philosophers and scholars have branded babies as burdens and obstacles to one's personality, career or happiness." },
+            { key: "E", text: "(E) There are far more pet dogs in South Korea than babies." }
+        ];
+
+        const discourseQuestions = [
+            { id: 71, text: "The September 16th cover depicts a young woman alone, lounging in a chair as she reads a book, surrounded by three cats... [71] To be fair, Talbot doesn't exploit Vance's comment...", correct: "C", exp: "答案: (C)。\n💡 解析：銜接上文介紹《紐約客》封面，(C) 選項指出該封面扣合特約作家 Margaret Talbot 的專題文章，並直接引出下一句的 Talbot 與 Vance 議題。" },
+            { id: 72, text: "American eugenicists encouraged genetically 'fitter' white families, the bigger, the better, with similar prizes. [72] Dreams of a big family often clash with economic realities...", correct: "B", exp: "答案: (B)。\n💡 解析：延續納粹德國頒發勳章與美國優生學家提供獎勵，(B) 選項「普丁亦為生育十胎以上的母親頒發蘇聯英雄勳章」延續各國政策獎勵多育的歷史與現狀。" },
+            { id: 73, text: "For thousands of years, poets and parents have celebrated the glory of being alive and having babies. [73] It's indeed strange.", correct: "D", exp: "答案: (D)。\n💡 解析：前文提到千百年來世人讚頌生命的繁衍，(D) 以 however 轉折「然而我們卻不幸身處於哲學家與學者將嬰兒視為負擔與障礙的時代」，呼應後句 It's indeed strange。" },
+            { id: 74, text: "South Korea's fertility rate is only 0.72, the lowest in the world. [74] As of 2021, there were 1.65 million children aged 0 to 4, while there were about 5 or 6 million dogs...", correct: "E", exp: "答案: (E)。\n💡 解析：後文提到南韓 0-4 歲幼兒 165 萬人，家犬卻多達 500-600 萬隻，故 (E)「南韓的寵物狗數量遠多於嬰兒」為本段的最佳承接句。" },
+            { id: 75, text: "Despite his alarm call, President Yoon Suk Yeol and his wife Kim Keon-hee have six dogs and five cats at their official residence and no children. [75] But the way forward is not, as The New Yorker seems to suggest, celebrating childlessness.", correct: "A", exp: "答案: (A)。\n💡 解析：從南韓延伸至全球視角，(A)「為何全球不同文化與經濟背景下生育率都在下滑是個謎團」，自然承接末句「但解方絕非慶祝無子化」。" }
+        ];
+
+        const vocabWritingData = [
+            { id: 76, prompt: "The situation in Gaza has left many people f_____s and frustrated due to the ongoing conflict and humanitarian issues. Many feel extremely angry and helpless as a result.", answer: "furious", exp: "答案: furious (狂怒的/極其憤怒的)。\n💡 老師解析：後句 \"feel extremely angry\" 直接呼應 furious 的字義。\n【搭配詞】be furious with/at sb（對某人大發雷霆）、furious pace（飛快的速度）。\n【字根】fury (狂怒) + -ous (形容詞字尾)。" },
+            { id: 77, prompt: "The dense rainforest provides a rich h_____t for countless species, many of which are found nowhere else on Earth.", answer: "habitat", exp: "答案: habitat (棲息地)。\n💡 老師解析：雨林提供無數物種豐富的「棲息環境」。\n【搭配詞】natural habitat（天然棲息地）、habitat loss/destruction（棲地喪失/破壞）。\n【字源】源自拉丁文 habitare (居住)。" },
+            { id: 78, prompt: "The company introduced an i_____e approach to sustainable energy, revolutionizing the way we harness solar power.", answer: "innovative", exp: "答案: innovative (創新的/革新的)。\n💡 老師解析：後文 revolutionizing（帶來革命性突破）提示該方法具高度「創新性」。\n【搭配詞】innovative approach/solution（創新的方法/解方）。\n【字根】in- (進入/朝向) + nov (新，如 novel) + -ative (形容詞字尾)。" },
+            { id: 79, prompt: "During COVID times, many companies implemented a work-from-home policy, which offered employees a more f_____e schedule and improved work-life balance.", answer: "flexible", exp: "答案: flexible (有彈性的/靈活的)。\n💡 老師解析：居家辦公提供員工更為「彈性」的工作排程。\n【搭配詞】flexible schedule/hours（彈性工時）、flexible mindset（靈活思維）。\n【字根】flex (彎曲) + -ible (易於...的)。" },
+            { id: 80, prompt: "Her dedication to the project paid off tr_____ly, resulting in a significant increase in sales and client satisfaction.", answer: "tremendously", exp: "答案: tremendously (極大地/非常地)。\n💡 老師解析：修飾動詞片語 paid off，表示獲得「巨大的」成功與回報。\n【搭配詞】contribute tremendously to（帶來莫大貢獻）、grow tremendously（驚人成長）。" },
+            { id: 81, prompt: "Oscar Wilde's remark, 'The optimist sees the doughnut; the pessimist sees the hole,' suggests that some focus on the food itself, while others only see the h_____w center.", answer: "hollow", exp: "答案: hollow (中空的/虛無的)。\n💡 老師解析：甜甜圈的中心是「中空的 (hollow center)」，呼應前面提到的 hole。\n【搭配詞】hollow promise（空洞的承諾）、hollow victory（虛幻的勝利）。" },
+            { id: 82, prompt: "The king decided to b_____h the traitor from the kingdom, ensuring he would never return to cause further harm.", answer: "banish", exp: "答案: banish (放逐/驅逐)。\n💡 老師解析：後文「ensuring he would never return」指出國王決定將叛徒「驅逐/放逐」出境。\n【搭配詞】banish sb from a place（將某人驅逐出某地）、banish fear（驅除恐懼）。" },
+            { id: 83, prompt: "After a long day at work, I felt so d_____y that I could barely keep my eyes open during the movie.", answer: "drowsy", exp: "答案: drowsy (昏昏欲睡的)。\n💡 老師解析：後文「barely keep eyes open」(眼睛都快睜不開) 說明處於非常「昏睡」的狀態。\n【搭配詞】feel drowsy（感覺昏昏欲睡）、drowsy driving（疲勞駕駛）。" },
+            { id: 84, prompt: "After sitting at my desk for hours, I needed to stand up and s_____h to relieve the tension in my muscles.", answer: "stretch", exp: "答案: stretch (伸展/拉筋)。\n💡 老師解析：久坐後起立「伸展舒展」以減緩肌肉緊繃。\n【搭配詞】stretch one's legs（站起來走走活動筋骨）、stretch muscles（伸展肌肉）。" },
+            { id: 85, prompt: "Driven by curiosity, we decided to e_____e the hidden trails in the forest to see where they would lead us.", answer: "explore", exp: "答案: explore (探索/探險)。\n💡 老師解析：出於好奇，決定沿著隱密步道「探索」林間深處。\n【搭配詞】explore the possibilities（探索各種可能性）、explore uncharted territory（探尋未知領域）。" }
+        ];
+
+        const translationBlanks = [
+            { id: 86, cn: "Jessie 未能認知到網路安全的重要性，故不幸【淪為網路詐騙和身分盜竊】的受害者。", hint: "Jessie failed to recognize the importance of cybersecurity and unfortunately ___ to online scams and identity theft.", accepted: ["fell victim"], exp: "參考答案：fell victim\n💡 解析：fall victim to... 為重要學測片語，表「淪為...的受害者」。注意本句動詞需配合前文 failed 使用過去式 fell。" },
+            { id: 87, cn: "她的新筆電花了【很多錢】，但對於她的工作很重要，所以她認為這筆開支是值得的。", hint: "Her new laptop cost an ___, but it was essential for her job, so she decided it was worth the expense.", accepted: ["arm and a leg"], exp: "參考答案：arm and a leg\n💡 解析：cost (sb) an arm and a leg 為高頻英語成語，比喻「花了一大筆錢/要價極其昂貴」。" },
+            { id: 88, cn: "我希望等到我經濟上變得寬裕時，我【已經彌補】了父母為我們家庭所做的犧牲。", hint: "I hope that by the time I become financially comfortable, I will have ___ for the sacrifices my parents made for our family.", accepted: ["made up"], exp: "參考答案：made up\n💡 解析：make up for... 指「補償/彌補...」。此處接在 will have 之後，使用過去分詞 made up。" },
+            { id: 89, cn: "隨著截止日期的臨近，團隊決定【挽起袖子】，熬夜完成這項專案。", hint: "With the deadline approaching, the team decided to ___ their ___ and work late into the night to finish the project.", accepted: ["roll up sleeves", "roll up their sleeves"], exp: "參考答案：roll up (their) sleeves\n💡 解析：roll up one's sleeves 意為「挽起袖子準備大幹一場」。" },
+            { id: 90, cn: "在當地的收容所做志工看似是一個微小的行動，但它確實能在有需要的人們生活中【產生影響】。", hint: "Volunteering at the local shelter may seem like a small act, but it can truly ___ in the lives of those in need.", accepted: ["make a difference", "make an impact"], exp: "參考答案：make a difference / make an impact\n💡 解析：make a difference / make an impact in sb's life 在某人的生命中產生重要積極的影響。" },
+            { id: 91, cn: "雜食性動物【以植物和動物為食】，這使得它們的飲食比草食性動物或肉食性動物更加多樣化。", hint: "Omnivores ___ both plants and animals, allowing them to have a more varied diet compared to herbivores or carnivores.", accepted: ["feed on"], exp: "參考答案：feed on\n💡 解析：feed on 指「（動物）以...為食」。主詞為 Omnivores 複數，故動詞用原型 feed on。" }
+        ];
+
+        const fullTranslation92 = {
+            id: 92,
+            cn: "92. 易於依賴父母的人往往直到準備自己生活時，才會意識到變得獨立有多困難。(People...) (4%)",
+            ref: "People who tend to rely/depend on their parents often don't realize how difficult it is to become independent until they prepare to live on their own.",
+            breakdown: [
+                "【前半主詞子句 1分】People who tend to rely/depend on their parents...",
+                "【主要動詞與受詞 1分】often don't realize how difficult it is to become independent...",
+                "【not... until... 句構 1分】until they prepare to live on their own / by themselves.",
+                "【時態與字彙搭配 1分】全句時態採現在式，搭配詞 depend on / on one's own 使用精確。"
+            ]
+        };
+
+        const App = () => {
+            const [step, setStep] = useState(1); // 1: Login, 2: Quiz, 3: Result
+            const [activeTab, setActiveTab] = useState("all");
+            const [student, setStudent] = useState({ classInfo: '', seat: '', name: '' });
+
+            // State for answers
+            const [vocabAns, setVocabAns] = useState(Array(vocabQuestions.length).fill(null));
+            const [clozeAns, setClozeAns] = useState(Array(20).fill(null)); // 36-55
+            const [contextAns, setContextAns] = useState(Array(10).fill('')); // 56-65
+            const [reading66, setReading66] = useState({ A: false, B: false, C: false, D: false, E: false });
+            const [reading67, setReading67] = useState(null);
+            const [reading68, setReading68] = useState({ item1: '', item2: '', item3: '', item4: '' });
+            const [reading69, setReading69] = useState('');
+            const [reading70, setReading70] = useState({ blank1: '', blank2: '' });
+            const [discourseAns, setDiscourseAns] = useState(Array(5).fill('')); // 71-75
+            const [writingAns, setWritingAns] = useState(Array(10).fill('')); // 76-85
+            const [transBlankAns, setTransBlankAns] = useState(Array(6).fill('')); // 86-91
+            const [trans92Ans, setTrans92Ans] = useState('');
+
+            // Google Sheets integration state - 已預設綁定老師的專屬試算表接收端
+            const [sheetUrl, setSheetUrl] = useState('https://script.google.com/macros/s/AKfycby1-Nhx3eQhgLqnoT1_4URC3qky7pwqPgjwxDJs6oLJqY8q2e4dK6QzipnA_hYDLZdS/exec');
+            const [isSubmittingToSheet, setIsSubmittingToSheet] = useState(false);
+            const [sheetSubmitStatus, setSheetSubmitStatus] = useState(null); // 'success' | 'error' | null
+
+            // Modal state
+            const [modal, setModal] = useState({ isOpen: false, title: '', message: '', type: 'alert', onConfirm: null });
+
+            const showNotice = (title, message) => setModal({ isOpen: true, title, message, type: 'alert', onConfirm: null });
+            const showConfirm = (title, message, onConfirm) => setModal({ isOpen: true, title, message, type: 'confirm', onConfirm });
+            const closeModal = () => setModal(prev => ({ ...prev, isOpen: false }));
+
+            const scoreSummary = useMemo(() => {
+                let total = 0;
+                let details = {
+                    vocab: 0, cloze: 0, context: 0,
+                    reading: 0, discourse: 0, writing: 0,
+                    transBlanks: 0, trans92: 0
+                };
+
+                // Vocab (16-35): 1 pt each
+                vocabQuestions.forEach((q, idx) => {
+                    if (vocabAns[idx] === q.correct) details.vocab += 1;
+                });
+
+                // Cloze (36-55): 1 pt each
+                let clozeIndex = 0;
+                clozePassages.forEach(pass => {
+                    pass.questions.forEach(q => {
+                        if (clozeAns[clozeIndex] === q.correct) details.cloze += 1;
+                        clozeIndex++;
+                    });
+                });
+
+                // Context (56-65): 1 pt each
+                contextPassageQuestions.forEach((q, idx) => {
+                    if (contextAns[idx] === q.correct) details.context += 1;
+                });
+
+                // Reading (66-70): (10%)
+                if (reading66.A && reading66.B && !reading66.C && !reading66.D && reading66.E) {
+                    details.reading += 2;
+                }
+                if (reading67 === 3) details.reading += 2;
+                if (reading68.item1 === '2' && reading68.item2 === '4' && reading68.item3 === '1' && reading68.item4 === '3') {
+                    details.reading += 2;
+                }
+                const clean69 = reading69.trim().toLowerCase().replace(/[.,]/g, '');
+                if (clean69.includes("severe abuse from her mother")) details.reading += 2;
+                const b1 = reading70.blank1.trim().toLowerCase();
+                const b2 = reading70.blank2.trim().toLowerCase();
+                if (b1 === 'suicide' && (b2 === 'inspire' || b2 === 'inspires' || b2 === 'inspired')) details.reading += 2;
+
+                // Discourse (71-75): 1 pt each
+                discourseQuestions.forEach((q, idx) => {
+                    if (discourseAns[idx] === q.correct) details.discourse += 1;
+                });
+
+                // Writing (76-85): 1 pt each
+                vocabWritingData.forEach((q, idx) => {
+                    if (writingAns[idx].trim().toLowerCase() === q.answer.toLowerCase()) details.writing += 1;
+                });
+
+                // Translation blanks (86-91): 1 pt each
+                translationBlanks.forEach((q, idx) => {
+                    const studentInput = transBlankAns[idx].trim().toLowerCase().replace(/\s+/g, ' ');
+                    const match = q.accepted.some(acc => studentInput === acc.toLowerCase());
+                    if (match) details.transBlanks += 1;
+                });
+
+                // 92 full sentence
+                if (trans92Ans.trim().length > 25) {
+                    details.trans92 = 4;
+                }
+
+                total = details.vocab + details.cloze + details.context + details.reading + details.discourse + details.writing + details.transBlanks + details.trans92;
+                return { total, details };
+            }, [vocabAns, clozeAns, contextAns, reading66, reading67, reading68, reading69, reading70, discourseAns, writingAns, transBlankAns, trans92Ans]);
+
+            const handleLogin = (e) => {
+                e.preventDefault();
+                if (!student.classInfo.trim() || !student.seat.trim() || !student.name.trim()) {
+                    showNotice("請填妥資料", "請輸入班級、座號與姓名，方可進入正式考卷系統。");
+                    return;
+                }
+                setStep(2);
+                window.scrollTo(0, 0);
+            };
+
+            const handleSubmitQuiz = () => {
+                showConfirm(
+                    "確定要交卷嗎？",
+                    "送出後系統將立即進行全卷自動批改，展示解答與詳解，並同步將成績記錄於後台試算表中。",
+                    async () => {
+                        setStep(3);
+                        window.scrollTo(0, 0);
+
+                        if (sheetUrl.trim()) {
+                            setIsSubmittingToSheet(true);
+                            setSheetSubmitStatus(null);
+                            try {
+                                const payload = {
+                                    timestamp: new Date().toLocaleString("zh-TW", { timeZone: "Asia/Taipei" }),
+                                    classInfo: student.classInfo,
+                                    seat: student.seat,
+                                    name: student.name,
+                                    totalScore: scoreSummary.total,
+                                    vocabScore: scoreSummary.details.vocab,
+                                    clozeScore: scoreSummary.details.cloze,
+                                    contextScore: scoreSummary.details.context,
+                                    readingScore: scoreSummary.details.reading,
+                                    discourseScore: scoreSummary.details.discourse,
+                                    writingScore: scoreSummary.details.writing,
+                                    transBlanksScore: scoreSummary.details.transBlanks,
+                                    trans92Score: scoreSummary.details.trans92,
+                                    trans92Text: trans92Ans
+                                };
+
+                                await fetch(sheetUrl.trim(), {
+                                    method: 'POST',
+                                    mode: 'no-cors',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify(payload)
+                                });
+
+                                setIsSubmittingToSheet(false);
+                                setSheetSubmitStatus('success');
+                            } catch (err) {
+                                console.error("Sheets submission error:", err);
+                                setIsSubmittingToSheet(false);
+                                setSheetSubmitStatus('error');
+                            }
+                        }
+                    }
+                );
+            };
+
+            return (
+                <div className="min-h-screen pb-16">
+                    {}
+                    <header className="bg-indigo-700 text-white shadow-md sticky top-0 z-40">
+                        <div className="max-w-6xl mx-auto px-4 py-3 sm:px-6 flex flex-wrap justify-between items-center">
+                            <div>
+                                <h1 className="text-xl font-bold flex items-center gap-2">
+                                    <span>🎯 高二英文第一次段考線上測驗</span>
+                                    <span className="text-xs bg-indigo-500 text-indigo-100 py-0.5 px-2 rounded-full">113-1-1 A卷 完整版</span>
+                                </h1>
+                                <p className="text-xs text-indigo-200 mt-0.5">題目範圍：第 16 題至第 92 題 (字彙、克漏字、文意選填、閱讀、篇章、寫作與翻譯)</p>
+                            </div>
+                            {step === 2 && (
+                                <div className="text-right text-xs sm:text-sm mt-2 sm:mt-0 bg-indigo-800 px-3 py-1.5 rounded-lg border border-indigo-600">
+                                    <span className="font-semibold text-amber-300 mr-2">{student.classInfo}班 {student.seat}號 {student.name}</span>
+                                    <button onClick={handleSubmitQuiz} className="bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-1 px-3 rounded shadow transition text-xs">
+                                        完成交卷 ➜
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    </header>
+
+                    {/* Main Container */}
+                    <main className="max-w-6xl mx-auto px-4 sm:px-6 mt-6">
+                        
+                        {}
+                        {step === 1 && (
+                            <div className="max-w-md mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 p-8 fade-in">
+                                <div className="text-center mb-6">
+                                    <div className="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto text-2xl mb-3 font-bold">
+                                        ✍️
+                                    </div>
+                                    <h2 className="text-2xl font-bold text-slate-800">學生身分登入</h2>
+                                    <p className="text-slate-500 text-sm mt-1">請確實填寫個人資料，測驗結束後將產生正式成績單與詳解</p>
+                                </div>
+
+                                <form onSubmit={handleLogin} className="space-y-4">
+                                    <div>
+                                        <label className="block text-sm font-semibold text-slate-700 mb-1">班級</label>
+                                        <input
+                                            type="text"
+                                            required
+                                            placeholder="例如：201"
+                                            value={student.classInfo}
+                                            onChange={e => setStudent({...student, classInfo: e.target.value})}
+                                            className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none text-slate-800"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold text-slate-700 mb-1">座號</label>
+                                        <input
+                                            type="number"
+                                            required
+                                            min="1"
+                                            placeholder="例如：12"
+                                            value={student.seat}
+                                            onChange={e => setStudent({...student, seat: e.target.value})}
+                                            className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none text-slate-800"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-semibold text-slate-700 mb-1">姓名</label>
+                                        <input
+                                            type="text"
+                                            required
+                                            placeholder="例如：王小明"
+                                            value={student.name}
+                                            onChange={e => setStudent({...student, name: e.target.value})}
+                                            className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none text-slate-800"
+                                        />
+                                    </div>
+
+                                    <div className="bg-amber-50 border-l-4 border-amber-400 p-3 rounded text-xs text-amber-800 mt-4 leading-relaxed">
+                                        📌 <strong>作答提醒：</strong> 本次測驗由第 16 題至 92 題共 77 題，涵蓋學測主流各大題型。請安心作答，隨時注意時間分配。
+                                    </div>
+
+                                    <div className="pt-2 border-t border-slate-200 mt-4">
+                                        <div className="flex items-center gap-1.5 text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-2 rounded-lg font-medium">
+                                            <span>🟢</span>
+                                            <span><strong>成績雲端同步已就緒：</strong>交卷後成績將自動登記至老師的 Google 試算表。</span>
+                                        </div>
+
+                                        <details className="text-xs text-slate-500 cursor-pointer mt-2">
+                                            <summary className="font-semibold text-slate-500 hover:text-slate-700">
+                                                ⚙️ 查看或變更試算表登記網址
+                                            </summary>
+                                            <div className="mt-2 p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1.5">
+                                                <label className="block font-medium text-slate-700">Google Apps Script 網頁應用程式網址：</label>
+                                                <input
+                                                    type="url"
+                                                    value={sheetUrl}
+                                                    onChange={e => setSheetUrl(e.target.value)}
+                                                    className="w-full px-3 py-1.5 text-xs border rounded bg-white font-mono text-slate-600"
+                                                />
+                                            </div>
+                                        </details>
+                                    </div>
+
+                                    <button
+                                        type="submit"
+                                        className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg shadow-md transition-all mt-4 flex items-center justify-center gap-2"
+                                    >
+                                        進入測驗 ➜
+                                    </button>
+                                </form>
+                            </div>
+                        )}
+
+                        {}
+                        {step === 2 && (
+                            <div className="space-y-8 fade-in">
+                                
+                                {/* Quick Navigation Pill Tabs */}
+                                <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-200 flex flex-wrap gap-2 text-xs font-semibold">
+                                    <span className="text-slate-400 py-1 px-2 self-center">快速切換：</span>
+                                    <a href="#sec-vocab" className="px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-700 hover:bg-indigo-100">II. 字彙 (16-35)</a>
+                                    <a href="#sec-cloze" className="px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-700 hover:bg-indigo-100">III. 克漏字 (36-55)</a>
+                                    <a href="#sec-context" className="px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-700 hover:bg-indigo-100">IV. 文意選填 (56-65)</a>
+                                    <a href="#sec-reading" className="px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-700 hover:bg-indigo-100">V. 閱讀測驗 (66-70)</a>
+                                    <a href="#sec-discourse" className="px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-700 hover:bg-indigo-100">VI. 篇章結構 (71-75)</a>
+                                    <a href="#sec-writing" className="px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-700 hover:bg-indigo-100">VII. 文意字彙 (76-85)</a>
+                                    <a href="#sec-trans" className="px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-700 hover:bg-indigo-100">VIII. 翻譯題 (86-92)</a>
+                                </div>
+
+                                {/* PART II: Level Vocabulary (16-35) */}
+                                <section id="sec-vocab" className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+                                    <div className="border-b pb-4 mb-6">
+                                        <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+                                            <span className="w-8 h-8 rounded-lg bg-indigo-600 text-white inline-flex items-center justify-center text-sm">II</span>
+                                            Level Vocabulary 單字選擇題 (第 16-35 題)
+                                        </h2>
+                                        <p className="text-slate-500 text-sm mt-1">每題 1 分，共 20 題。請選出最適當的單字選項填入空格中。</p>
+                                    </div>
+
+                                    <div className="space-y-6">
+                                        {vocabQuestions.map((q, qIndex) => (
+                                            <div key={q.id} className="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                                                <p className="text-base font-medium text-slate-800 mb-3">
+                                                    <span className="font-bold text-indigo-600 mr-2">{q.id}.</span>{q.text}
+                                                </p>
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                                    {q.options.map((opt, optIndex) => (
+                                                        <button
+                                                            key={optIndex}
+                                                            type="button"
+                                                            onClick={() => {
+                                                                const updated = [...vocabAns];
+                                                                updated[qIndex] = optIndex;
+                                                                setVocabAns(updated);
+                                                            }}
+                                                            className={`text-left px-3.5 py-2.5 rounded-lg border text-sm transition-all flex items-center justify-between ${vocabAns[qIndex] === optIndex ? 'bg-indigo-600 text-white font-semibold border-indigo-600 shadow-sm' : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'}`}
+                                                        >
+                                                            <span>{opt}</span>
+                                                            {vocabAns[qIndex] === optIndex && <span>✓</span>}
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </section>
+
+                                {/* PART III: Cloze Test (36-55) */}
+                                <section id="sec-cloze" className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+                                    <div className="border-b pb-4 mb-6">
+                                        <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+                                            <span className="w-8 h-8 rounded-lg bg-indigo-600 text-white inline-flex items-center justify-center text-sm">III</span>
+                                            Cloze Test 綜合克漏字測驗 (第 36-55 題)
+                                        </h2>
+                                        <p className="text-slate-500 text-sm mt-1">共 4 篇短文，每題 1 分，共 20 題。請閱讀文章後選出最佳選項。</p>
+                                    </div>
+
+                                    <div className="space-y-10">
+                                        {clozePassages.map((passage, pIdx) => {
+                                            const baseIndex = pIdx * 5;
+                                            return (
+                                                <div key={pIdx} className="border border-slate-200 rounded-xl p-5 bg-slate-50">
+                                                    <h3 className="font-bold text-slate-800 text-base mb-3 text-indigo-700">{passage.title}</h3>
+                                                    <div className="bg-white p-4 rounded-lg border border-slate-200 text-slate-700 leading-relaxed text-sm mb-6 whitespace-pre-line font-serif">
+                                                        {passage.intro}
+                                                    </div>
+
+                                                    <div className="space-y-4">
+                                                        {passage.questions.map((q, qSubIdx) => {
+                                                            const overallIdx = baseIndex + qSubIdx;
+                                                            return (
+                                                                <div key={q.id} className="p-3 bg-white rounded-lg border border-slate-200">
+                                                                    <div className="font-semibold text-slate-800 text-sm mb-2">
+                                                                        <span className="text-indigo-600 mr-2">題號 {q.id}：</span>
+                                                                    </div>
+                                                                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                                                                        {q.options.map((opt, oIdx) => (
+                                                                            <button
+                                                                                key={oIdx}
+                                                                                type="button"
+                                                                                onClick={() => {
+                                                                                    const updated = [...clozeAns];
+                                                                                    updated[overallIdx] = oIdx;
+                                                                                    setClozeAns(updated);
+                                                                                }}
+                                                                                className={`px-3 py-2 text-xs rounded border text-left transition-all ${clozeAns[overallIdx] === oIdx ? 'bg-indigo-600 text-white font-semibold border-indigo-600' : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'}`}
+                                                                            >
+                                                                                {opt}
+                                                                            </button>
+                                                                        ))}
+                                                                    </div>
+                                                                </div>
+                                                            );
+                                                        })}
+                                                    </div>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </section>
+
+                                {/* PART IV: Words in Context (56-65) */}
+                                <section id="sec-context" className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+                                    <div className="border-b pb-4 mb-6">
+                                        <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+                                            <span className="w-8 h-8 rounded-lg bg-indigo-600 text-white inline-flex items-center justify-center text-sm">IV</span>
+                                            Words in Context 文意選填 (第 56-65 題)
+                                        </h2>
+                                        <p className="text-slate-500 text-sm mt-1">每題 1 分，共 10 題。選項不可重複使用，請依文意選出最適代號。</p>
+                                    </div>
+
+                                    {/* Option Word Bank */}
+                                    <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-4 mb-6">
+                                        <h4 className="text-xs font-bold text-indigo-900 mb-2 uppercase tracking-wide">選項目錄 (Option Bank)</h4>
+                                        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs">
+                                            {contextOptions.map(opt => (
+                                                <div key={opt.key} className="bg-white py-1.5 px-2.5 rounded border border-indigo-100 font-medium text-slate-700 shadow-2xs">
+                                                    {opt.label}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-slate-800 text-sm leading-relaxed mb-6 font-serif">
+                                        Three-dimensional printing has revolutionized medical <span className="font-bold text-indigo-600 underline">[56]</span>, ecology and construction. For instance, artificial limbs can now be produced through 3D printing, allowing them to be <span className="font-bold text-indigo-600 underline">[57]</span> at relatively cheap prices. This can be a great help for people with disability, injured athletes and war veterans to have another chance at improving the <span className="font-bold text-indigo-600 underline">[58]</span> of their lives. These prosthetic limbs are <span className="font-bold text-indigo-600 underline">[59]</span> with sensors to help one move by simply flexing one's muscles. Another exciting <span className="font-bold text-indigo-600 underline">[60]</span> using 3D printers is creating artificial coral reefs to help underwater creatures to reproduce, because global warming has alarmingly destroyed the natural environments of these sea creatures. Precious underwater lives are now <span className="font-bold text-indigo-600 underline">[61]</span> in the Caribbean. Lastly, building <span className="font-bold text-indigo-600 underline">[62]</span> has never been easier with 3D printing technology. Dubai is leading the way in <span className="font-bold text-indigo-600 underline">[63]</span> buildings that are produced by 3D printers. They have managed to achieve this with half of the labor and a tenth of the time <span className="font-bold text-indigo-600 underline">[64]</span> thus lowering the cost of construction and delivering offices that will become common in many modern cities. The sky is the <span className="font-bold text-indigo-600 underline">[65]</span> when it comes to 3D printers, paving the way to an amazing future for humanity.
+                                    </div>
+
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        {contextPassageQuestions.map((q, idx) => (
+                                            <div key={q.id} className="p-3 bg-white border border-slate-200 rounded-lg flex items-center justify-between">
+                                                <span className="text-sm font-semibold text-slate-700">第 {q.id} 題：</span>
+                                                <select
+                                                    value={contextAns[idx]}
+                                                    onChange={e => {
+                                                        const updated = [...contextAns];
+                                                        updated[idx] = e.target.value;
+                                                        setContextAns(updated);
+                                                    }}
+                                                    className="px-3 py-1.5 border border-slate-300 rounded text-sm bg-slate-50 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                                                >
+                                                    <option value="">選擇代號...</option>
+                                                    {contextOptions.map(opt => (
+                                                        <option key={opt.key} value={opt.key}>{opt.label}</option>
+                                                    ))}
+                                                </select>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </section>
+
+                                {/* PART V: Reading Comprehension (66-70) */}
+                                <section id="sec-reading" className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+                                    <div className="border-b pb-4 mb-6">
+                                        <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+                                            <span className="w-8 h-8 rounded-lg bg-indigo-600 text-white inline-flex items-center justify-center text-sm">V</span>
+                                            Reading Comprehension 閱讀測驗 (第 66-70 題)
+                                        </h2>
+                                        <p className="text-slate-500 text-sm mt-1">草間彌生專題文章，包含圖形多選題、字義判斷、時間排序與文意簡答。</p>
+                                    </div>
+
+                                    <div className="bg-slate-50 p-5 rounded-xl border border-slate-200 text-slate-800 text-sm leading-relaxed mb-6 font-serif whitespace-pre-line">
+                                        {readingPassage}
+                                    </div>
+
+                                    {/* 66 Picture Question */}
+                                    <div className="border border-slate-200 rounded-xl p-5 mb-6 bg-white">
+                                        <h3 className="font-bold text-slate-800 text-sm mb-3">
+                                            66. Which of the following contribute to Yayoi Kusama's iconic fashion image? (多選題：請勾選所有正確項目)
+                                        </h3>
+                                        <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 text-xs mb-3">
+                                            <label className={`p-3 border rounded-lg cursor-pointer flex flex-col items-center justify-center text-center ${reading66.A ? 'bg-indigo-50 border-indigo-500' : 'bg-slate-50'}`}>
+                                                <input type="checkbox" checked={reading66.A} onChange={e => setReading66({...reading66, A: e.target.checked})} className="mb-2" />
+                                                <span className="font-bold text-base mb-1">💄 (A)</span>
+                                                <span>Bold Lipstick (鮮豔口紅)</span>
+                                            </label>
+                                            <label className={`p-3 border rounded-lg cursor-pointer flex flex-col items-center justify-center text-center ${reading66.B ? 'bg-indigo-50 border-indigo-500' : 'bg-slate-50'}`}>
+                                                <input type="checkbox" checked={reading66.B} onChange={e => setReading66({...reading66, B: e.target.checked})} className="mb-2" />
+                                                <span className="font-bold text-base mb-1">💇‍♀️ (B)</span>
+                                                <span>Colorful Wigs (彩色假髮)</span>
+                                            </label>
+                                            <label className={`p-3 border rounded-lg cursor-pointer flex flex-col items-center justify-center text-center ${reading66.C ? 'bg-indigo-50 border-indigo-500' : 'bg-slate-50'}`}>
+                                                <input type="checkbox" checked={reading66.C} onChange={e => setReading66({...reading66, C: e.target.checked})} className="mb-2" />
+                                                <span className="font-bold text-base mb-1">📿 (C)</span>
+                                                <span>Gold Necklace (金項鍊)</span>
+                                            </label>
+                                            <label className={`p-3 border rounded-lg cursor-pointer flex flex-col items-center justify-center text-center ${reading66.D ? 'bg-indigo-50 border-indigo-500' : 'bg-slate-50'}`}>
+                                                <input type="checkbox" checked={reading66.D} onChange={e => setReading66({...reading66, D: e.target.checked})} className="mb-2" />
+                                                <span className="font-bold text-base mb-1">🧦 (D)</span>
+                                                <span>Striped Socks (條紋長襪)</span>
+                                            </label>
+                                            <label className={`p-3 border rounded-lg cursor-pointer flex flex-col items-center justify-center text-center ${reading66.E ? 'bg-indigo-50 border-indigo-500' : 'bg-slate-50'}`}>
+                                                <input type="checkbox" checked={reading66.E} onChange={e => setReading66({...reading66, E: e.target.checked})} className="mb-2" />
+                                                <span className="font-bold text-base mb-1">👗 (E)</span>
+                                                <span>Polka-dot Dress (圓點洋裝)</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    {/* 67 Vocabulary in context */}
+                                    <div className="border border-slate-200 rounded-xl p-5 mb-6 bg-white">
+                                        <h3 className="font-bold text-slate-800 text-sm mb-3">
+                                            67. Which word is the closest in meaning to "savvy"?
+                                        </h3>
+                                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                                            {["(A) risky", "(B) conservative", "(C) generous", "(D) knowledgeable"].map((opt, idx) => (
+                                                <button
+                                                    key={idx}
+                                                    type="button"
+                                                    onClick={() => setReading67(idx)}
+                                                    className={`px-3 py-2 text-xs rounded border text-left ${reading67 === idx ? 'bg-indigo-600 text-white font-semibold' : 'bg-slate-50 text-slate-700'}`}
+                                                >
+                                                    {opt}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* 68 Order Sequence */}
+                                    <div className="border border-slate-200 rounded-xl p-5 mb-6 bg-white">
+                                        <h3 className="font-bold text-slate-800 text-sm mb-3">
+                                            68. In what order is the following information presented in the passage? (請於下拉選單依序填入 1, 2, 3, 4)
+                                        </h3>
+                                        <div className="space-y-2 text-xs">
+                                            <div className="flex items-center gap-3">
+                                                <select value={reading68.item1} onChange={e => setReading68({...reading68, item1: e.target.value})} className="border rounded px-2 py-1">
+                                                    <option value="">順序</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+                                                </select>
+                                                <span>Kusama's rise to fame in the United States</span>
+                                            </div>
+                                            <div className="flex items-center gap-3">
+                                                <select value={reading68.item2} onChange={e => setReading68({...reading68, item2: e.target.value})} className="border rounded px-2 py-1">
+                                                    <option value="">順序</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+                                                </select>
+                                                <span>Kusama's venture into the fashion industry</span>
+                                            </div>
+                                            <div className="flex items-center gap-3">
+                                                <select value={reading68.item3} onChange={e => setReading68({...reading68, item3: e.target.value})} className="border rounded px-2 py-1">
+                                                    <option value="">順序</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+                                                </select>
+                                                <span>The unique features of Kusama's artworks</span>
+                                            </div>
+                                            <div className="flex items-center gap-3">
+                                                <select value={reading68.item4} onChange={e => setReading68({...reading68, item4: e.target.value})} className="border rounded px-2 py-1">
+                                                    <option value="">順序</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+                                                </select>
+                                                <span>The meaning of polka dots in Kusama's artworks</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* 69 Exact words text input */}
+                                    <div className="border border-slate-200 rounded-xl p-5 mb-6 bg-white">
+                                        <h3 className="font-bold text-slate-800 text-sm mb-2">
+                                            69. Based on what you have read, what might be a possible cause of Kusama's mental health issues? Answer this question using exact words from the passage.
+                                        </h3>
+                                        <input
+                                            type="text"
+                                            placeholder="請直接引用文章字詞回答..."
+                                            value={reading69}
+                                            onChange={e => setReading69(e.target.value)}
+                                            className="w-full px-3 py-2 border rounded-lg text-sm bg-slate-50 focus:ring-2 focus:ring-indigo-500"
+                                        />
+                                    </div>
+
+                                    {/* 70 Fill blanks */}
+                                    <div className="border border-slate-200 rounded-xl p-5 bg-white">
+                                        <h3 className="font-bold text-slate-800 text-sm mb-2">
+                                            70. Fill in each blank with one word from the passage, making necessary changes to form a grammatical sentence.
+                                        </h3>
+                                        <p className="text-xs text-slate-600 mb-3">
+                                            Despite being at risk of committing (1) <span className="font-bold">[&nbsp;&nbsp;&nbsp;&nbsp;]</span>, Kusama believes her mental disturbances (2) <span className="font-bold">[&nbsp;&nbsp;&nbsp;&nbsp;]</span> her to create art.
+                                        </p>
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                                            <div>
+                                                <label className="block text-slate-600 mb-1">空格 (1)：</label>
+                                                <input type="text" placeholder="例如：suicide" value={reading70.blank1} onChange={e => setReading70({...reading70, blank1: e.target.value})} className="w-full p-2 border rounded" />
+                                            </div>
+                                            <div>
+                                                <label className="block text-slate-600 mb-1">空格 (2) (注意文法時態)：</label>
+                                                <input type="text" placeholder="例如：inspire" value={reading70.blank2} onChange={e => setReading70({...reading70, blank2: e.target.value})} className="w-full p-2 border rounded" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                {/* PART VI: Discourse (71-75) */}
+                                <section id="sec-discourse" className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+                                    <div className="border-b pb-4 mb-6">
+                                        <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+                                            <span className="w-8 h-8 rounded-lg bg-indigo-600 text-white inline-flex items-center justify-center text-sm">VI</span>
+                                            Discourse 篇章結構 (第 71-75 題)
+                                        </h2>
+                                        <p className="text-slate-500 text-sm mt-1">選自《紐約客》封面與全球少子化議題。每題 1 分，共 5 題。選項不可重複使用。</p>
+                                    </div>
+
+                                    {/* Options */}
+                                    <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-4 mb-6 space-y-2 text-xs text-slate-700">
+                                        {discourseOptions.map(opt => (
+                                            <div key={opt.key} className="bg-white p-2 rounded border border-indigo-100 font-medium">
+                                                {opt.text}
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div className="space-y-4">
+                                        {discourseQuestions.map((q, idx) => (
+                                            <div key={q.id} className="p-4 bg-slate-50 border border-slate-200 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                                <div className="text-sm text-slate-800 font-serif">
+                                                    <span className="font-bold text-indigo-600 mr-2">第 {q.id} 題 空格處</span>
+                                                    {q.text}
+                                                </div>
+                                                <select
+                                                    value={discourseAns[idx]}
+                                                    onChange={e => {
+                                                        const updated = [...discourseAns];
+                                                        updated[idx] = e.target.value;
+                                                        setDiscourseAns(updated);
+                                                    }}
+                                                    className="px-3 py-2 border rounded-lg text-sm bg-white font-bold text-indigo-700 self-start sm:self-auto shrink-0"
+                                                >
+                                                    <option value="">選擇 (A)-(E)</option>
+                                                    {["A", "B", "C", "D", "E"].map(k => (
+                                                        <option key={k} value={k}>({k})</option>
+                                                    ))}
+                                                </select>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </section>
+
+                                {/* PART VII: Vocabulary Writing (76-85) */}
+                                <section id="sec-writing" className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+                                    <div className="border-b pb-4 mb-6">
+                                        <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+                                            <span className="w-8 h-8 rounded-lg bg-indigo-600 text-white inline-flex items-center justify-center text-sm">VII</span>
+                                            Vocabulary Writing 文意字彙拼寫 (第 76-85 題)
+                                        </h2>
+                                        <p className="text-slate-500 text-sm mt-1">請注意題號與字首字尾提示，全對才給分。每題 1 分，共 10 題。</p>
+                                    </div>
+
+                                    <div className="space-y-4">
+                                        {vocabWritingData.map((q, idx) => (
+                                            <div key={q.id} className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                                                <p className="text-sm text-slate-800 mb-2 leading-relaxed">
+                                                    <span className="font-bold text-indigo-600 mr-2">{q.id}.</span>{q.prompt}
+                                                </p>
+                                                <div className="flex items-center gap-3">
+                                                    <input
+                                                        type="text"
+                                                        placeholder="請拼寫完整單字..."
+                                                        value={writingAns[idx]}
+                                                        onChange={e => {
+                                                            const updated = [...writingAns];
+                                                            updated[idx] = e.target.value;
+                                                            setWritingAns(updated);
+                                                        }}
+                                                        className="px-4 py-2 border border-slate-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-indigo-500 focus:outline-none w-full sm:w-64"
+                                                    />
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </section>
+
+                                {/* PART VIII: Translation (86-92) */}
+                                <section id="sec-trans" className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+                                    <div className="border-b pb-4 mb-6">
+                                        <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+                                            <span className="w-8 h-8 rounded-lg bg-indigo-600 text-white inline-flex items-center justify-center text-sm">VIII</span>
+                                            Translation 引導式翻譯與中譯英 (第 86-92 題)
+                                        </h2>
+                                        <p className="text-slate-500 text-sm mt-1">第 86~91 題為填空翻譯（每格不限一字，每題 1 分）；第 92 題為整句翻譯 (4 分)。</p>
+                                    </div>
+
+                                    <div className="space-y-6">
+                                        {translationBlanks.map((q, idx) => (
+                                            <div key={q.id} className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                                                <div className="text-xs text-indigo-700 font-semibold mb-1">【第 {q.id} 題】</div>
+                                                <p className="text-sm font-medium text-slate-800 mb-1">{q.cn}</p>
+                                                <p className="text-xs text-slate-600 italic mb-2">{q.hint}</p>
+                                                <input
+                                                    type="text"
+                                                    placeholder="請填入英文片語或單字..."
+                                                    value={transBlankAns[idx]}
+                                                    onChange={e => {
+                                                        const updated = [...transBlankAns];
+                                                        updated[idx] = e.target.value;
+                                                        setTransBlankAns(updated);
+                                                    }}
+                                                    className="w-full sm:w-80 px-3 py-2 border border-slate-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-indigo-500"
+                                                />
+                                            </div>
+                                        ))}
+
+                                        {/* 92 full sentence */}
+                                        <div className="p-5 bg-indigo-50 border border-indigo-200 rounded-xl">
+                                            <div className="text-xs text-indigo-800 font-bold mb-1">【第 92 題 整句翻譯 4%】</div>
+                                            <p className="text-sm font-semibold text-slate-800 mb-2">{fullTranslation92.cn}</p>
+                                            <textarea
+                                                rows="3"
+                                                placeholder="Please write your complete English translation here (starting with People...)..."
+                                                value={trans92Ans}
+                                                onChange={e => setTrans92Ans(e.target.value)}
+                                                className="w-full p-3 border border-indigo-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                                            ></textarea>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                {/* Bottom Submit Card */}
+                                <div className="p-6 bg-slate-800 text-white rounded-2xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                                    <div>
+                                        <h3 className="text-lg font-bold">檢查完畢了嗎？</h3>
+                                        <p className="text-slate-300 text-xs mt-1">點擊交卷後，系統將直接出分並解鎖全部 16-92 題的詳盡解析！</p>
+                                    </div>
+                                    <button
+                                        onClick={handleSubmitQuiz}
+                                        className="w-full sm:w-auto px-8 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold rounded-xl shadow-lg transition transform hover:-translate-y-0.5 text-base"
+                                    >
+                                        確認交卷並看成績 🚀
+                                    </button>
+                                </div>
+
+                            </div>
+                        )}
+
+                        {}
+                        {step === 3 && (
+                            <div className="space-y-8 fade-in">
+                                
+                                {/* Scorecard Header */}
+                                <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-8 text-center relative overflow-hidden">
+                                    <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500"></div>
+                                    <span className="text-4xl">🎓</span>
+                                    <h2 className="text-2xl font-black text-slate-800 mt-2">測驗成績結算單</h2>
+                                    <p className="text-slate-600 text-sm mt-1">
+                                        受試學生：<span className="font-bold text-indigo-600">{student.classInfo} 班 {student.seat} 號 {student.name}</span>
+                                    </p>
+
+                                    {/* Google Sheet Sync Indicator */}
+                                    {sheetUrl.trim() && (
+                                        <div className="mt-3 inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-full border">
+                                            {isSubmittingToSheet && (
+                                                <span className="text-amber-600 flex items-center gap-1">
+                                                    ⏳ 正在同步成績至老師的 Google 試算表...
+                                                </span>
+                                            )}
+                                            {!isSubmittingToSheet && sheetSubmitStatus === 'success' && (
+                                                <span className="text-emerald-700 bg-emerald-50 border-emerald-200 font-medium">
+                                                    ✅ 成績已成功登錄至雲端試算表！
+                                                </span>
+                                            )}
+                                            {!isSubmittingToSheet && sheetSubmitStatus === 'error' && (
+                                                <span className="text-rose-600 bg-rose-50 border-rose-200 font-medium">
+                                                    ⚠️ 雲端記錄略有延遲，但已完成本機批改。
+                                                </span>
+                                            )}
+                                        </div>
+                                    )}
+
+                                    <div className="my-6 inline-flex flex-col items-center justify-center p-6 rounded-2xl bg-indigo-50 border-2 border-indigo-200">
+                                        <div className="text-xs text-slate-500 uppercase tracking-wider font-semibold">本次得分 (總分 77 分制對應)</div>
+                                        <div className="text-6xl font-black text-indigo-700 my-1">{scoreSummary.total}</div>
+                                        <div className="text-xs text-indigo-600 font-medium">包含客觀題自動計分與第92題送交評分</div>
+                                    </div>
+
+                                    {/* Category breakdown chips */}
+                                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto text-xs text-slate-700">
+                                        <div className="bg-slate-50 p-2.5 rounded-lg border">單字選擇：<strong className="text-indigo-600">{scoreSummary.details.vocab} / 20</strong></div>
+                                        <div className="bg-slate-50 p-2.5 rounded-lg border">克漏字：<strong className="text-indigo-600">{scoreSummary.details.cloze} / 20</strong></div>
+                                        <div className="bg-slate-50 p-2.5 rounded-lg border">文意選填：<strong className="text-indigo-600">{scoreSummary.details.context} / 10</strong></div>
+                                        <div className="bg-slate-50 p-2.5 rounded-lg border">閱讀測驗：<strong className="text-indigo-600">{scoreSummary.details.reading} / 10</strong></div>
+                                        <div className="bg-slate-50 p-2.5 rounded-lg border">篇章結構：<strong className="text-indigo-600">{scoreSummary.details.discourse} / 5</strong></div>
+                                        <div className="bg-slate-50 p-2.5 rounded-lg border">單字拼寫：<strong className="text-indigo-600">{scoreSummary.details.writing} / 10</strong></div>
+                                        <div className="bg-slate-50 p-2.5 rounded-lg border">填空翻譯：<strong className="text-indigo-600">{scoreSummary.details.transBlanks} / 6</strong></div>
+                                        <div className="bg-slate-50 p-2.5 rounded-lg border">整句翻譯：<strong className="text-indigo-600">{scoreSummary.details.trans92} / 4</strong></div>
+                                    </div>
+
+                                    <div className="mt-6 flex justify-center gap-4">
+                                        <button
+                                            onClick={() => window.print()}
+                                            className="px-5 py-2 rounded-lg bg-slate-800 text-white font-semibold text-xs shadow hover:bg-slate-700 transition"
+                                        >
+                                            🖨️ 列印或存成 PDF
+                                        </button>
+                                        <button
+                                            onClick={() => window.location.reload()}
+                                            className="px-5 py-2 rounded-lg bg-indigo-600 text-white font-semibold text-xs shadow hover:bg-indigo-700 transition"
+                                        >
+                                            🔄 重新施測
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {/* Tab Filter for Reviewing Answers */}
+                                <div className="flex border-b border-slate-200 space-x-2 text-sm font-bold overflow-x-auto pb-1">
+                                    {["all", "vocab", "cloze", "context", "reading", "discourse", "writing", "trans"].map(tabKey => (
+                                        <button
+                                            key={tabKey}
+                                            onClick={() => setActiveTab(tabKey)}
+                                            className={`px-4 py-2 rounded-t-lg transition-all ${activeTab === tabKey ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white text-slate-600 hover:bg-slate-100'}`}
+                                        >
+                                            {tabKey === 'all' && '全部題型詳解'}
+                                            {tabKey === 'vocab' && '字彙選擇 (16-35)'}
+                                            {tabKey === 'cloze' && '克漏字 (36-55)'}
+                                            {tabKey === 'context' && '文意選填 (56-65)'}
+                                            {tabKey === 'reading' && '閱讀測驗 (66-70)'}
+                                            {tabKey === 'discourse' && '篇章結構 (71-75)'}
+                                            {tabKey === 'writing' && '單字拼寫 (76-85)'}
+                                            {tabKey === 'trans' && '翻譯題 (86-92)'}
+                                        </button>
+                                    ))}
+                                </div>
+
+                                <div className="space-y-6">
+
+                                    {/* 16-35 Review */}
+                                    {(activeTab === 'all' || activeTab === 'vocab') && (
+                                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                                            <h3 className="text-lg font-bold text-slate-800 border-l-4 border-indigo-600 pl-3 mb-4">
+                                                II. Level Vocabulary (第 16-35 題) 詳解
+                                            </h3>
+                                            <div className="space-y-4">
+                                                {vocabQuestions.map((q, idx) => {
+                                                    const isCorrect = vocabAns[idx] === q.correct;
+                                                    return (
+                                                        <div key={q.id} className={`p-4 rounded-xl border ${isCorrect ? 'bg-emerald-50 border-emerald-200' : 'bg-rose-50 border-rose-200'}`}>
+                                                            <div className="flex items-center justify-between mb-2">
+                                                                <span className="font-bold text-sm text-slate-800">題號 {q.id}</span>
+                                                                <span className={`text-xs px-2 py-0.5 rounded font-bold ${isCorrect ? 'bg-emerald-200 text-emerald-800' : 'bg-rose-200 text-rose-800'}`}>
+                                                                    {isCorrect ? '✓ 正確' : '✕ 錯誤'}
+                                                                </span>
+                                                            </div>
+                                                            <p className="text-sm text-slate-800 mb-2">{q.text}</p>
+                                                            <div className="text-xs text-slate-600 mb-2">
+                                                                學生作答：<span className="font-bold">{vocabAns[idx] !== null ? q.options[vocabAns[idx]] : '未作答'}</span> | 正確解答：<span className="font-bold text-emerald-700">{q.options[q.correct]}</span>
+                                                            </div>
+                                                            <div className="bg-white p-3 rounded-lg border text-xs text-slate-700 whitespace-pre-line leading-relaxed">
+                                                                {q.exp}
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* 36-55 Cloze Review */}
+                                    {(activeTab === 'all' || activeTab === 'cloze') && (
+                                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                                            <h3 className="text-lg font-bold text-slate-800 border-l-4 border-indigo-600 pl-3 mb-4">
+                                                III. Cloze Test (第 36-55 題) 詳解
+                                            </h3>
+                                            <div className="space-y-4">
+                                                {clozePassages.map((passage, pIdx) => {
+                                                    const baseIndex = pIdx * 5;
+                                                    return (
+                                                        <div key={pIdx} className="border p-4 rounded-xl bg-slate-50">
+                                                            <h4 className="font-bold text-sm text-indigo-700 mb-3">{passage.title}</h4>
+                                                            <div className="space-y-3">
+                                                                {passage.questions.map((q, qSubIdx) => {
+                                                                    const overallIdx = baseIndex + qSubIdx;
+                                                                    const isCorrect = clozeAns[overallIdx] === q.correct;
+                                                                    return (
+                                                                        <div key={q.id} className={`p-3 rounded-lg border ${isCorrect ? 'bg-emerald-50 border-emerald-200' : 'bg-rose-50 border-rose-200'}`}>
+                                                                            <div className="flex justify-between items-center text-xs mb-1">
+                                                                                <span className="font-bold">題號 {q.id}</span>
+                                                                                <span className={isCorrect ? 'text-emerald-700 font-bold' : 'text-rose-700 font-bold'}>{isCorrect ? '✓ 得分' : '✕ 答錯'}</span>
+                                                                            </div>
+                                                                            <div className="text-xs mb-2">
+                                                                                你的選擇：<strong>{clozeAns[overallIdx] !== null ? q.options[clozeAns[overallIdx]] : '未作答'}</strong> ｜ 正確解答：<strong className="text-emerald-700">{q.options[q.correct]}</strong>
+                                                                            </div>
+                                                                            <div className="bg-white p-2.5 rounded border text-xs text-slate-700 whitespace-pre-line leading-relaxed">
+                                                                                {q.exp}
+                                                                            </div>
+                                                                        </div>
+                                                                    );
+                                                                })}
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* 56-65 Context Review */}
+                                    {(activeTab === 'all' || activeTab === 'context') && (
+                                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                                            <h3 className="text-lg font-bold text-slate-800 border-l-4 border-indigo-600 pl-3 mb-4">
+                                                IV. Words in Context (第 56-65 題) 詳解
+                                            </h3>
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                                {contextPassageQuestions.map((q, idx) => {
+                                                    const isCorrect = contextAns[idx] === q.correct;
+                                                    return (
+                                                        <div key={q.id} className={`p-3 rounded-xl border ${isCorrect ? 'bg-emerald-50 border-emerald-200' : 'bg-rose-50 border-rose-200'}`}>
+                                                            <div className="flex justify-between text-xs font-bold mb-1">
+                                                                <span>第 {q.id} 題</span>
+                                                                <span className={isCorrect ? 'text-emerald-700' : 'text-rose-700'}>{isCorrect ? '✓' : '✕'}</span>
+                                                            </div>
+                                                            <p className="text-xs text-slate-700 mb-1">{q.text}</p>
+                                                            <div className="text-xs mb-2">你的回答：<strong>{contextAns[idx] || '未作答'}</strong> | 正確代號：<strong className="text-emerald-700">{q.correct}</strong></div>
+                                                            <div className="bg-white p-2 rounded border text-xs text-slate-700 whitespace-pre-line leading-relaxed">
+                                                                {q.exp}
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* 66-70 Reading Review */}
+                                    {(activeTab === 'all' || activeTab === 'reading') && (
+                                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                                            <h3 className="text-lg font-bold text-slate-800 border-l-4 border-indigo-600 pl-3 mb-4">
+                                                V. Reading Comprehension (第 66-70 題) 詳解
+                                            </h3>
+                                            <div className="space-y-4 text-xs">
+                                                <div className="p-3 bg-slate-50 border rounded-xl">
+                                                    <span className="font-bold text-sm text-slate-800">66. 草間彌生經典時尚造型 (多選題)</span>
+                                                    <p className="mt-1">官方標準答案：<strong>(A) Bold Lipstick, (B) Colorful Wigs, (E) Polka-dot Dress</strong></p>
+                                                    <p className="text-slate-600 mt-1">💡 老師解析：文章最後一段指出 \"crafting her image with colorful wigs, bold lipstick, and dresses featuring polka-dot patterns\"，完全對應 (A)、(B)、(E) 三幅圖片。</p>
+                                                </div>
+                                                <div className="p-3 bg-slate-50 border rounded-xl">
+                                                    <span className="font-bold text-sm text-slate-800">67. 字義測驗 "savvy"</span>
+                                                    <p className="mt-1">官方標準答案：<strong>(D) knowledgeable (精明的/熟稔商業運作的)</strong></p>
+                                                    <p className="text-slate-600 mt-1">💡 老師解析：savvy businesswoman 指「精明的女性企業家」，因其能自創品牌並與 LV 合作，故選 knowledgeable。</p>
+                                                </div>
+                                                <div className="p-3 bg-slate-50 border rounded-xl">
+                                                    <span className="font-bold text-sm text-slate-800">68. 篇章脈絡排序題</span>
+                                                    <p className="mt-1">官方標準答案：<strong>2 4 1 3</strong></p>
+                                                    <p className="text-slate-600 mt-1">💡 老師解析：第1段介紹獨特藝術特色(1) → 第2段在美成名(2) → 第3段圓點意義(3) → 第4段跨足時尚界(4)。</p>
+                                                </div>
+                                                <div className="p-3 bg-slate-50 border rounded-xl">
+                                                    <span className="font-bold text-sm text-slate-800">69. 精神疾病原因原文摘錄</span>
+                                                    <p className="mt-1">官方標準答案：<strong>severe abuse from her mother</strong></p>
+                                                    <p className="text-slate-600 mt-1">💡 老師解析：第二段明確提及 \"Kusama faced severe abuse from her mother and began showing signs of mental illness in childhood\"。</p>
+                                                </div>
+                                                <div className="p-3 bg-slate-50 border rounded-xl">
+                                                    <span className="font-bold text-sm text-slate-800">70. 綜合文意填空</span>
+                                                    <p className="mt-1">官方標準答案：<strong>(1) suicide ; (2) inspire (或 inspires / inspired)</strong></p>
+                                                    <p className="text-slate-600 mt-1">💡 老師解析：commit suicide (自殺)；由文章 \"source of inspiration\" 轉化為動詞 inspire sb to create art。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* 71-75 Discourse Review */}
+                                    {(activeTab === 'all' || activeTab === 'discourse') && (
+                                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                                            <h3 className="text-lg font-bold text-slate-800 border-l-4 border-indigo-600 pl-3 mb-4">
+                                                VI. Discourse 篇章結構 (第 71-75 題) 詳解
+                                            </h3>
+                                            <div className="space-y-3">
+                                                {discourseQuestions.map((q, idx) => {
+                                                    const isCorrect = discourseAns[idx] === q.correct;
+                                                    return (
+                                                        <div key={q.id} className={`p-3 rounded-xl border ${isCorrect ? 'bg-emerald-50 border-emerald-200' : 'bg-rose-50 border-rose-200'}`}>
+                                                            <div className="flex justify-between text-xs font-bold mb-1">
+                                                                <span>第 {q.id} 題</span>
+                                                                <span className={isCorrect ? 'text-emerald-700' : 'text-rose-700'}>{isCorrect ? '✓ 正確' : '✕ 錯誤'}</span>
+                                                            </div>
+                                                            <div className="text-xs mb-2">你的選擇：<strong>{discourseAns[idx] || '未作答'}</strong> | 正確代號：<strong className="text-emerald-700">{q.correct}</strong></div>
+                                                            <div className="bg-white p-2.5 rounded border text-xs text-slate-700 whitespace-pre-line leading-relaxed">
+                                                                {q.exp}
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* 76-85 Writing Review */}
+                                    {(activeTab === 'all' || activeTab === 'writing') && (
+                                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                                            <h3 className="text-lg font-bold text-slate-800 border-l-4 border-indigo-600 pl-3 mb-4">
+                                                VII. Vocabulary Writing (第 76-85 題) 詳解與名師搭配詞
+                                            </h3>
+                                            <div className="space-y-4">
+                                                {vocabWritingData.map((q, idx) => {
+                                                    const isCorrect = writingAns[idx].trim().toLowerCase() === q.answer.toLowerCase();
+                                                    return (
+                                                        <div key={q.id} className={`p-4 rounded-xl border ${isCorrect ? 'bg-emerald-50 border-emerald-200' : 'bg-rose-50 border-rose-200'}`}>
+                                                            <div className="flex justify-between items-center text-xs font-bold mb-1">
+                                                                <span>題號 {q.id}</span>
+                                                                <span className={isCorrect ? 'text-emerald-700' : 'text-rose-700'}>{isCorrect ? '✓ 拼寫正確' : '✕ 拼寫錯誤'}</span>
+                                                            </div>
+                                                            <div className="text-xs text-slate-700 mb-2">
+                                                                學生輸入：<span className="font-mono font-bold">{writingAns[idx] || '未作答'}</span> ｜ 標準答案：<span className="font-mono font-bold text-emerald-700">{q.answer}</span>
+                                                            </div>
+                                                            <div className="bg-white p-3 rounded-lg border text-xs text-slate-700 whitespace-pre-line leading-relaxed">
+                                                                {q.exp}
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* 86-92 Translation Review */}
+                                    {(activeTab === 'all' || activeTab === 'trans') && (
+                                        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                                            <h3 className="text-lg font-bold text-slate-800 border-l-4 border-indigo-600 pl-3 mb-4">
+                                                VIII. Translation (第 86-92 題) 詳解與評分指引
+                                            </h3>
+                                            
+                                            {/* 86-91 */}
+                                            <div className="space-y-3 mb-6">
+                                                {translationBlanks.map((q, idx) => {
+                                                    const studentInput = transBlankAns[idx].trim().toLowerCase().replace(/\s+/g, ' ');
+                                                    const isCorrect = q.accepted.some(acc => studentInput === acc.toLowerCase());
+                                                    return (
+                                                        <div key={q.id} className={`p-3 rounded-xl border ${isCorrect ? 'bg-emerald-50 border-emerald-200' : 'bg-rose-50 border-rose-200'}`}>
+                                                            <div className="flex justify-between text-xs font-bold mb-1">
+                                                                <span>第 {q.id} 題 填空翻譯</span>
+                                                                <span className={isCorrect ? 'text-emerald-700' : 'text-rose-700'}>{isCorrect ? '✓ 滿分' : '✕ 需訂正'}</span>
+                                                            </div>
+                                                            <p className="text-xs text-slate-800 mb-1">{q.cn}</p>
+                                                            <div className="text-xs text-slate-700 mb-2">
+                                                                你的作答：<span className="font-bold">{transBlankAns[idx] || '未填寫'}</span> ｜ 標準答案：<span className="font-bold text-emerald-700">{q.accepted.join(" / ")}</span>
+                                                            </div>
+                                                            <div className="bg-white p-2.5 rounded border text-xs text-slate-700 whitespace-pre-line leading-relaxed">
+                                                                {q.exp}
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+
+                                            {/* 92 */}
+                                            <div className="p-4 bg-indigo-50 border border-indigo-200 rounded-xl">
+                                                <h4 className="font-bold text-sm text-indigo-900 mb-2">第 92 題 整句翻譯 (4%) 權威評分與解析標準</h4>
+                                                <p className="text-xs text-slate-800 font-semibold mb-2">{fullTranslation92.cn}</p>
+                                                
+                                                <div className="bg-white p-3 rounded-lg border text-xs text-slate-700 mb-3">
+                                                    <span className="font-bold text-emerald-700">學生送交譯文：</span>
+                                                    <p className="font-serif italic mt-1">{trans92Ans || '（無作答）'}</p>
+                                                </div>
+
+                                                <div className="bg-emerald-50 p-3 rounded-lg border border-emerald-200 text-xs text-emerald-900 mb-3">
+                                                    <span className="font-bold">名師標準參考答案：</span>
+                                                    <p className="font-serif font-semibold mt-1">{fullTranslation92.ref}</p>
+                                                </div>
+
+                                                <div className="text-xs text-slate-700 space-y-1">
+                                                    <span className="font-bold text-indigo-800">段考評分標準 (配分拆解)：</span>
+                                                    {fullTranslation92.breakdown.map((item, bIdx) => (
+                                                        <div key={bIdx} className="pl-2 border-l-2 border-indigo-400">{item}</div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                </div>
+
+                            </div>
+                        )}
+
+                    </main>
+
+                    {}
+                    {modal.isOpen && (
+                        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 p-4">
+                            <div className="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6 fade-in border border-slate-100">
+                                <h3 className="text-lg font-bold text-slate-900 mb-2">{modal.title}</h3>
+                                <p className="text-slate-600 text-sm mb-6 leading-relaxed">{modal.message}</p>
+                                <div className="flex justify-end gap-3">
+                                    {modal.type === 'confirm' && (
+                                        <button
+                                            type="button"
+                                            onClick={closeModal}
+                                            className="px-4 py-2 text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition"
+                                        >
+                                            回到試卷檢查
+                                        </button>
+                                    )}
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            if (modal.onConfirm) modal.onConfirm();
+                                            closeModal();
+                                        }}
+                                        className="px-5 py-2 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow transition"
+                                    >
+                                        確定送出
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
